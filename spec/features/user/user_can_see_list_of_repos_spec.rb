@@ -28,4 +28,14 @@ describe 'User' do
   it 'shows the proper repositories when there are more than one user in the database with different tokens' do
 
   end
+
+  it 'does not show a github section without an access token' do
+    user = create(:user, access_token: nil)
+
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+
+    visit '/dashboard'
+
+    expect(page).to_not have_css('#Github')
+  end
 end
