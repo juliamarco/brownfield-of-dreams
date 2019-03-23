@@ -1,7 +1,9 @@
 class TutorialFacade < SimpleDelegator
-  def initialize(tutorial, video_id = nil)
-    super(tutorial)
+  def initialize(tutorial, video_id, current_user = nil)
+    @tutorial = tutorial
+    super(@tutorial)
     @video_id = video_id
+    @current_user = current_user
   end
 
   def current_video
