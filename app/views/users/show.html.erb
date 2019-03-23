@@ -18,7 +18,7 @@
 
   <%= button_to "Connect to Github", github_connect_path %>
 
-  <% if current_user.access_token %>
+  <% if current_user.uid %>
     <section id="Github">
       <h1>Github</h1>
       <section id="repositories">

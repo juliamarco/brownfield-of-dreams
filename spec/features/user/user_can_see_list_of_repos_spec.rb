@@ -2,11 +2,11 @@ require 'rails_helper'
 
 describe 'User' do
   it 'when I visit the dashboard I see a list of 5 repos' do
-    user = create(:user, access_token: ENV["AT_2"])
+    user = create(:user, uid: "1")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    VCR.use_cassette("github_service_2") do
+    VCR.use_cassette("github_service") do
       visit '/dashboard'
 
       expect(page).to have_css("#Github")
@@ -26,11 +26,11 @@ describe 'User' do
   end
 
   it 'shows the proper repositories when there are more than one user in the database with different tokens' do
-    user = create(:user)
+    user = create(:user, access_token: ENV["AT_2"], uid: "1")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
 
-    VCR.use_cassette("github_service") do
+    VCR.use_cassette("github_service_2") do
       visit '/dashboard'
 
       expect(page).to have_css("#Github")
