@@ -22,4 +22,22 @@ RSpec.describe User, type: :model do
       expect(admin.admin?).to be_truthy
     end
   end
+
+  describe "class methods" do
+    it '.bookmarks' do
+      tutorial_2 = create(:tutorial, title: "How to survive Turing", id: 1)
+      tutorial_1 = create(:tutorial, title: "How to bark", id: 2)
+
+      video_1 = create(:video, title: "The Bunny Ears Technique", tutorial: tutorial_1, position: 3)
+      video_2 = create(:video, title: "The Best Video", tutorial: tutorial_1, position: 2)
+      video_3 = create(:video, title: "Not easy", tutorial: tutorial_2, position: 1)
+
+      user = create(:user)
+      user_video_1 = create(:user_video, user: user, video: video_1)
+      user_video_2 = create(:user_video, user: user, video: video_2)
+      user_video_3 = create(:user_video, user: user, video: video_3)
+
+      expect(User.bookmarks(user)).to eq([video_3, video_2, video_1])
+    end
+  end
 end
