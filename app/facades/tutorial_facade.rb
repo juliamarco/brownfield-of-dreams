@@ -9,17 +9,23 @@ class TutorialFacade < SimpleDelegator
   def current_video
     if @video_id
       videos.find(@video_id)
-    else
+    elsif videos.first
       videos.first
+    else
+      Video.new(description: "")
     end
   end
 
   def next_video
-    videos[current_video_index + 1] || current_video
+    if videos.first
+      videos[current_video_index + 1] || current_video
+    else
+      Video.new
+    end
   end
 
   def play_next_video?
-    !(current_video.position >= maximum_video_position)
+    !(current_video.position >= maximum_video_position) if videos.first
   end
 
   private
@@ -29,6 +35,6 @@ class TutorialFacade < SimpleDelegator
   end
 
   def maximum_video_position
-    videos.max_by { |video| video.position }.position
+    videos.max_by { |video| video.position }.position if videos.first
   end
 end
