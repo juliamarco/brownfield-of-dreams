@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe 'User' do
   it 'can connect to github via oauth' do
-    user = create(:user)
+    user = create(:user, access_token: nil)
 
     visit login_path
 
@@ -13,7 +13,7 @@ describe 'User' do
 
     visit '/dashboard'
 
-    VCR.use_cassette("dashboard") do
+    VCR.use_cassette("oauth") do
       click_on "Connect to Github"
       expect(current_path).to eq(dashboard_path)
 
