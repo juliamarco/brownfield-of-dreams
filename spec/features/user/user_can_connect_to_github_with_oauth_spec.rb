@@ -13,7 +13,7 @@ describe 'User' do
 
     visit '/dashboard'
 
-    VCR.use_cassette("dashboard") do
+    VCR.use_cassette("oauth") do
       click_on "Connect to Github"
       expect(current_path).to eq(dashboard_path)
 

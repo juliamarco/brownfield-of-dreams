@@ -16,6 +16,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<YOUTUBE_API_KEY>") { ENV['YOUTUBE_API_KEY'] }
   config.filter_sensitive_data("<GITHUB_CLIENT_ID>") { ENV['GITHUB_CLIENT_ID'] }
   config.filter_sensitive_data("<GITHUB_CLIENT_SECRET>") { ENV['GITHUB_CLIENT_SECRET'] }
+  config.filter_sensitive_data("<ACCESS_TOKEN>") { ENV['ACCESS_TOKEN'] }
 end
 
 OmniAuth.config.test_mode = true
@@ -23,7 +24,7 @@ OmniAuth.config.test_mode = true
   OmniAuth.config.mock_auth[:github] = OmniAuth::AuthHash.new({
     provider: 'github',
     uid: '545457',
-    credentials: {token: "asdbjhsdfbjhwegfuewy"},
+    credentials: {token: ENV['ACCESS_TOKEN']},
                   extra: {raw_info: {login: "holaquetal"}}
     })
 

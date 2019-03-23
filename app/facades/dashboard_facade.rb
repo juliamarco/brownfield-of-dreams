@@ -29,5 +29,4 @@ class DashboardFacade
   def service
     GithubService.new
   end
-
 end

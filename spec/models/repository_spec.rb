@@ -1,10 +1,11 @@
 require 'rails_helper'
 
 describe Repository do
-
   before :each do
+    user = create(:user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
     VCR.use_cassette('github service') do
-      @github_data = GithubService.new.get_repos[0]
+      @github_data = GithubService.new.get_repos(user)[0]
       @repo = Repository.new(@github_data)
     end
   end
