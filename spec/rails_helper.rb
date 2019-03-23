@@ -17,6 +17,7 @@ VCR.configure do |config|
   config.filter_sensitive_data("<GITHUB_CLIENT_ID>") { ENV['GITHUB_CLIENT_ID'] }
   config.filter_sensitive_data("<GITHUB_CLIENT_SECRET>") { ENV['GITHUB_CLIENT_SECRET'] }
   config.filter_sensitive_data("<ACCESS_TOKEN>") { ENV['ACCESS_TOKEN'] }
+  config.filter_sensitive_data("<AT_2>") { ENV['AT_2'] }
 end
 
 OmniAuth.config.test_mode = true
