@@ -29,4 +29,8 @@ class DashboardFacade
   def service
     GithubService.new
   end
+
+  def bookmarks
+    User.bookmarks(@current_user)
+  end
 end
