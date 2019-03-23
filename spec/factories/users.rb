@@ -4,6 +4,7 @@ FactoryBot.define do
     first_name { Faker::Dog.name }
     last_name { Faker::Artist.name }
     password { Faker::Color.color_name }
+    access_token { ENV["ACCESS_TOKEN"] }
     role { :default }
   end
 
