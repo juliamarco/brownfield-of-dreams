@@ -18,6 +18,10 @@ class ApplicationController < ActionController::Base
     Tutorial.find(id).title
   end
 
+  def require_user
+    render file: 'errors/not_found', status: 404 unless current_user
+  end
+
   def four_oh_four
     raise ActionController::RoutingError.new('Not Found')
   end
