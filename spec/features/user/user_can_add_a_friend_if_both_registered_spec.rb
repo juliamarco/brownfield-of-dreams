@@ -3,7 +3,7 @@ require 'rails_helper'
 describe 'As a registered user' do
   it 'lets me add another registered user as a friend' do
     user_1 = create(:user, uid: "1")
-    user_2 = create(:user, uid: "35079289")
+    user_2 = create(:user, uid: "35079289", access_token: ENV["AT_2"], handle: "juliamarco")
 
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
@@ -28,7 +28,7 @@ describe 'As a registered user' do
           click_on "Add as Friend"
         end
       end
-
+save_and_open_page
       expect(page).to have_css("#Friends", count: 1)
       within(first(".friend")) do
         expect(page).to have_content("juliamarco")

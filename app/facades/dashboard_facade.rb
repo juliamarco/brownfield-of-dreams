@@ -25,13 +25,13 @@ class DashboardFacade
 
   def friend?(id)
     user = User.find_by(uid:id)
-    @current_user.friends.include?(user)
+    current_user = User.find(@current_user.id)
+    current_user.friends.include?(user)
   end
 
   def friends
-    @current_user.friends.map do |friend|
-      binding.pry
-    end
+    user = User.find(@current_user.id)
+    user.friends
   end
 
   def following

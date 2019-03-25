@@ -37,7 +37,7 @@
             <li class="handle"><%= link_to follower.handle, "https://github.com/#{follower.handle}" %></li>
             <% if facade.user?(follower.attributes[:id])%>
               <% unless facade.friend?(follower.attributes[:id]) %>
-                <p><%= link_to "Add as Friend", add_friend_path, method: :post %></p>
+                <p><%= link_to "Add as Friend", add_friend_path(uid: follower.attributes[:id]), method: :post %></p>
               <% end %>
             <% end %>
           </ul>
@@ -50,7 +50,7 @@
             <li class="handle"><%= link_to user.handle, "https://github.com/#{user.handle}" %></li>
             <% if facade.user?(user.attributes[:id])%>
               <% unless facade.friend?(user.attributes[:id]) %>
-                <p><%= link_to "Add as Friend", add_friend_path(user.attributes[:id]), method: :post %></p>
+                <p><%= link_to "Add as Friend", add_friend_path(uid: user.attributes[:id]), method: :post %></p>
               <% end %>
             <% end %>
           </ul>
@@ -62,7 +62,6 @@
         <h1>Friends</h1>
         <% unless facade.friends.empty? %>
           <% facade.friends.each do |friend| %>
-          <% binding.pry %>
             <ul class="friend">
               <li><%= link_to friend.handle, "https://github.com/#{friend.handle}" %></li>
             </ul>
