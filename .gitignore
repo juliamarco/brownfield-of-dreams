@@ -17,8 +17,6 @@
 /storage/*
 /coverage
 
-# Ignore cassettes
-/spec/cassettes/
 
 /node_modules
 /yarn-error.log

@@ -19,6 +19,21 @@ class DashboardFacade
     end
   end
 
+  def user?(id)
+    User.exists?(uid: id)
+  end
+
+  def friend?(id)
+    user = User.find_by(uid:id)
+    current_user = User.find(@current_user.id)
+    current_user.friends.include?(user)
+  end
+
+  def friends
+    user = User.find(@current_user.id)
+    user.friends
+  end
+
   def following
     response = service.get_following(@current_user)
     response.map do |following_data|
