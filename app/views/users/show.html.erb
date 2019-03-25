@@ -16,7 +16,9 @@
     </ul>
   </section>
 
-  <%= button_to "Connect to Github", github_connect_path %>
+    <% unless current_user.uid %>
+      <%= button_to "Connect to Github", github_connect_path %>
+    <% end %>
 
   <% if current_user.uid %>
     <section id="Github">
@@ -33,6 +35,11 @@
         <% facade.followers.each do |follower| %>
           <ul class="follower">
             <li class="handle"><%= link_to follower.handle, "https://github.com/#{follower.handle}" %></li>
+            <% if facade.user?(follower.attributes[:id])%>
+              <% unless facade.friend?(follower.attributes[:id]) %>
+                <p><%= link_to "Add as Friend", add_friend_path, method: :post %></p>
+              <% end %>
+            <% end %>
           </ul>
         <% end %>
       </section>
@@ -41,9 +48,27 @@
         <% facade.following.each do |user| %>
           <ul class="user">
             <li class="handle"><%= link_to user.handle, "https://github.com/#{user.handle}" %></li>
+            <% if facade.user?(user.attributes[:id])%>
+              <% unless facade.friend?(user.attributes[:id]) %>
+                <p><%= link_to "Add as Friend", add_friend_path(user.attributes[:id]), method: :post %></p>
+              <% end %>
+            <% end %>
           </ul>
         <% end %>
       </section>
     </section>
+
+    <section id="Friends">
+        <h1>Friends</h1>
+        <% unless facade.friends.empty? %>
+          <% facade.friends.each do |friend| %>
+          <% binding.pry %>
+            <ul class="friend">
+              <li><%= link_to friend.handle, "https://github.com/#{friend.handle}" %></li>
+            </ul>
+          <% end %>
+        <% end %>
+      </section>
+
   <% end %>
 </section>
