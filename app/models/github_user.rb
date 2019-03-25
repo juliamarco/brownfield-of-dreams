@@ -1,5 +1,6 @@
 class GithubUser
-  attr_reader :handle
+  attr_reader :attributes,
+              :handle
 
   def initialize(attributes)
     @attributes = attributes
