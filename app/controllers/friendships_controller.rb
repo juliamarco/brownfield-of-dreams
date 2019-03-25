@@ -9,6 +9,7 @@ class FriendshipsController < ApplicationController
       redirect_to dashboard_path
     else
       flash[:error] = "This friendship could not be created"
+      redirect_to dashboard_path
     end
   end
 
