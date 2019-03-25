@@ -2,13 +2,14 @@ require 'rails_helper'
 
 describe "User" do
   it 'can see a list of followers' do
-    user = create(:user)
+    user_1 = create(:user, uid: "1")
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1)
 
     VCR.use_cassette("github_service") do
-      visit '/dashboard'
-      
+
+      visit dashboard_path
+
       expect(page).to have_css("#followers")
       expect(page).to have_content("Followers")
 
@@ -18,8 +19,8 @@ describe "User" do
           expect(page).to have_css(".handle")
         end
 
-        url = "https://github.com/timnallen"
-        expect(page).to have_link("timnallen", href: url)
+        url = "https://github.com/juliamarco"
+        expect(page).to have_link("juliamarco", href: url)
       end
     end
   end
