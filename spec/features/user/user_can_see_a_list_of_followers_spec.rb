@@ -8,7 +8,7 @@ describe "User" do
 
     VCR.use_cassette("github_service") do
       visit '/dashboard'
-
+      
       expect(page).to have_css("#followers")
       expect(page).to have_content("Followers")
 

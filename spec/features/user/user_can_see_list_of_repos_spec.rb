@@ -14,10 +14,10 @@ describe 'User' do
 
       within "#Github" do
         expect(page).to have_css(".repository", count: 5)
-        within(first(".repository")) do
+        within "#repositories" do
           expect(page).to have_css(".name")
 
-          url = "https://github.com/juliamarco/activerecord-obstacle-course"
+          url = "https://github.com/timnallen/activerecord-obstacle-course"
 
           expect(page).to have_link("activerecord-obstacle-course", href: url)
         end
@@ -43,8 +43,8 @@ describe 'User' do
         url_1 = "https://github.com/juliamarco/activerecord-obstacle-course"
         url_2 = "https://github.com/timnallen/activerecord_exploration"
 
-        expect(page).to_not have_link("activerecord-obstacle-course", href: url_1)
-        expect(page).to have_link("activerecord_exploration", href: url_2)
+        expect(page).to_not have_link("activerecord_exploration", href: url_2)
+        expect(page).to have_link("activerecord-obstacle-course", href: url_1)
       end
     end
   end
