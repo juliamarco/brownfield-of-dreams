@@ -20,5 +20,4 @@ class User < ApplicationRecord
          .where("users.id = #{current_user.id}")
          .order('tutorials.id ASC, videos.position ASC')
   end
-
 end

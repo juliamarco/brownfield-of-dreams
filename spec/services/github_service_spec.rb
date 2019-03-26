@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe GithubService do
+describe GithubService do # rubocop:disable Metrics/BlockLength
   before :each do
     @user = create(:user)
   end
@@ -10,9 +10,9 @@ describe GithubService do
     expect(service).to be_a(GithubService)
   end
 
-  describe "instance methods" do
-    it "get repositories" do
-      VCR.use_cassette("github service repos") do
+  describe 'instance methods' do # rubocop:disable Metrics/BlockLength
+    it 'get repositories' do
+      VCR.use_cassette('github service repos') do
         service = GithubService.new
 
         result = service.get_repos(@user)
@@ -22,8 +22,8 @@ describe GithubService do
       end
     end
 
-    it "get followers" do
-      VCR.use_cassette("github service followers") do
+    it 'get followers' do
+      VCR.use_cassette('github service followers') do
         service = GithubService.new
 
         result = service.get_followers(@user)
@@ -33,8 +33,8 @@ describe GithubService do
       end
     end
 
-    it "get following" do
-      VCR.use_cassette("github service following") do
+    it 'get following' do
+      VCR.use_cassette('github service following') do
         service = GithubService.new
 
         result = service.get_following(@user)
