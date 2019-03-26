@@ -1,0 +1,50 @@
+AllCops:
+  Exclude:
+    - db/**/*
+    - config/**/*
+    - script/**
+    - bin/**
+    - fixtures/**
+    - log/**
+    - public/**
+    - spec/factories/**
+    - node_modules/**/*
+    - Gemfile
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Style/SymbolArray:
+  Enabled: false
+
+Layout/AlignHash:
+  Enabled: false
+
+Lint/UselessAssignment:
+  Enabled: false
+
+Naming/VariableNumber:
+  Enabled: false
+
+Style/ExpandPathArguments:
+  Enabled: false
+
+Style/OptionalArguments:
+  Enabled: false
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
+
+Style/InverseMethods:
+  Enabled: false
+
+Style/SymbolProc:
+  Enabled: false
+
+
+ # rubocop:disable Metrics/LineLength
+ # rubocop:disable Metrics/BlockLength
+ # rubocop:disable Lint/UselessAssignment

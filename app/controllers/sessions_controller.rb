@@ -1,6 +1,8 @@
 class SessionsController < ApplicationController
   def new
+    # rubocop:disable all
     @user ||= User.new
+    # rubocop:enable all
   end
 
   def create
@@ -9,7 +11,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       redirect_to dashboard_path
     else
-      flash[:error] = "Looks like your email or password is invalid"
+      flash[:error] = 'Looks like your email or password is invalid'
       render :new
     end
   end
@@ -18,5 +20,4 @@ class SessionsController < ApplicationController
     session[:user_id] = nil
     redirect_to root_path
   end
-
 end

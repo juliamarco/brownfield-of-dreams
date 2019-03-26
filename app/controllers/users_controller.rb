@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   def show
     render locals: {
-      facade: DashboardFacade.new({quantity: 5}, current_user)
+      facade: DashboardFacade.new({ quantity: 5 }, current_user)
     }
   end
 
@@ -26,5 +26,4 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:email, :first_name, :last_name, :password)
   end
-
 end

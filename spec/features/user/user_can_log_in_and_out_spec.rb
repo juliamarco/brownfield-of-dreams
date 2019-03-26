@@ -1,13 +1,13 @@
 require 'rails_helper'
 
-describe 'User' do
+describe 'User' do # rubocop:disable Metrics/BlockLength
   it 'user can sign in' do
     VCR.use_cassette('user_spec') do
       user = create(:user)
 
       visit '/'
 
-      click_on "Sign In"
+      click_on 'Sign In'
 
       expect(current_path).to eq(login_path)
 
@@ -48,8 +48,8 @@ describe 'User' do
 
   it 'is shown an error when incorrect info is entered' do
     user = create(:user)
-    fake_email = "email@email.com"
-    fake_password = "123"
+    fake_email = 'email@email.com'
+    fake_password = '123'
 
     visit login_path
 
@@ -58,7 +58,6 @@ describe 'User' do
 
     click_on 'Log In'
 
-    expect(page).to have_content("Looks like your email or password is invalid")
-
+    expect(page).to have_content('Looks like your email or password is invalid')
   end
 end

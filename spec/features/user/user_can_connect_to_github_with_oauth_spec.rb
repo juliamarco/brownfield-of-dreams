@@ -13,14 +13,14 @@ describe 'User' do
 
     visit '/dashboard'
 
-    VCR.use_cassette("oauth") do
-      click_on "Connect to Github"
+    VCR.use_cassette('oauth') do
+      click_on 'Connect to Github'
       expect(current_path).to eq(dashboard_path)
 
-      expect(page).to have_css("#Github")
-      expect(page).to have_css("#repositories")
-      expect(page).to have_css("#followers")
-      expect(page).to have_css("#following")
+      expect(page).to have_css('#Github')
+      expect(page).to have_css('#repositories')
+      expect(page).to have_css('#followers')
+      expect(page).to have_css('#following')
     end
   end
 end
