@@ -1,5 +1,4 @@
 class DashboardFacade
-
   def initialize(attributes, current_user = nil)
     @quantity = attributes[:quantity] || 0
     @current_user = current_user
@@ -24,7 +23,7 @@ class DashboardFacade
   end
 
   def friend?(id)
-    user = User.find_by(uid:id)
+    user = User.find_by(uid: id)
     current_user = User.find(@current_user.id)
     current_user.friends.include?(user)
   end

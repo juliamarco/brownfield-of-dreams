@@ -1,5 +1,4 @@
 class TutorialsController < ApplicationController
-
   def index
     render locals: {
       facade: TutorialsFacade.new(current_user)
@@ -14,7 +13,7 @@ class TutorialsController < ApplicationController
           facade: TutorialFacade.new(tutorial, params[:video_id], current_user)
         }
       else
-        flash[:error] = "You have to register to access this tutorial"
+        flash[:error] = 'You have to register to access this tutorial'
         redirect_to tutorials_path
       end
     else
@@ -23,5 +22,4 @@ class TutorialsController < ApplicationController
       }
     end
   end
-
 end

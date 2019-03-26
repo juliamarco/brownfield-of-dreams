@@ -12,7 +12,7 @@ class TutorialFacade < SimpleDelegator
     elsif videos.first
       videos.first
     else
-      Video.new(description: "")
+      Video.new(description: '')
     end
   end
 

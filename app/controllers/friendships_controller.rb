@@ -8,7 +8,7 @@ class FriendshipsController < ApplicationController
     if friendship.save
       redirect_to dashboard_path
     else
-      flash[:error] = "This friendship could not be created"
+      flash[:error] = 'This friendship could not be created'
     end
   end
 
@@ -17,6 +17,4 @@ class FriendshipsController < ApplicationController
   def friendship_params
     params.permit(:uid)
   end
-
-
 end

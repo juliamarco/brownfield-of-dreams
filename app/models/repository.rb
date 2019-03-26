@@ -7,5 +7,4 @@ class Repository
     @name = attributes[:name]
     @full_name = attributes[:full_name]
   end
-
 end
