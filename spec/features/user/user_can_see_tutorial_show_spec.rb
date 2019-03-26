@@ -5,7 +5,7 @@ describe 'as a user' do
     user = create(:user)
     tutorial_1 = create(:tutorial, title: 'How to bark', classroom: true)
 
-    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+    allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user) # rubocop:disable Metrics/LineLength
 
     visit tutorial_path(tutorial_1)
 

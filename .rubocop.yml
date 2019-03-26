@@ -10,6 +10,7 @@ AllCops:
     - spec/factories/**
     - node_modules/**/*
     - Gemfile
+    - Rakefile
 
 Style/FrozenStringLiteralComment:
   Enabled: false
