@@ -62,7 +62,7 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
     expect(page).to have_content('Username already exists')
   end
 
-  it 'allows me to register as a new user' do
+  it 'allows me to activate as a new user' do
     email = 'myname@gmail.com'
     first_name = 'Tim'
     last_name = 'Jr'
@@ -88,7 +88,8 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
 
     expect(page).to have_content('This account has not yet been activated. Please check your email.') # rubocop:disable Metrics/LineLength
 
-    visit '/activation'
+    token = User.last.temporary_token
+    visit "/activation?token=#{token}"
 
     expect(page).to have_content('Thank you! Your account is now activated.')
 

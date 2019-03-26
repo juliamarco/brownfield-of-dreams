@@ -10,13 +10,14 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.create(user_params)
+    user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
       full_name = user.first_name + ' ' + user.last_name
+      user.update(temporary_token: SecureRandom.urlsafe_base64.to_s)
       flash[:success] = "Logged in as #{full_name}"
-      flash[:info] = 'This account has not yet been activated. Please check your email.'  
-      UserNotifierMailer.inform(current_user.email).deliver_now
+      flash[:info] = 'This account has not yet been activated. Please check your email.'
+      UserNotifierMailer.inform(current_user.email, current_user.temporary_token).deliver_now
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'

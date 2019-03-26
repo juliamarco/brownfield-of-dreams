@@ -14,7 +14,7 @@ describe 'as a user' do
 
     expect(current_path).to eq('/invite')
 
-    fill_in 'invite[Github Handle]', with: 'timnallen'
+    fill_in 'invite[github_handle]', with: 'timnallen'
 
     click_on 'Send Invite'
 
