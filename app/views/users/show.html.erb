@@ -17,7 +17,7 @@
   </section>
 
     <% unless current_user.uid %>
-      <%= button_to "Connect to Github", github_connect_path %>
+      <%= button_to "Connect to Github", github_connect_path, class: "mt2 btn btn-primary mb1 bg-teal" %>
     <% end %>
 
   <% if current_user.uid %>
@@ -37,7 +37,7 @@
             <li class="handle"><%= link_to follower.handle, "https://github.com/#{follower.handle}" %></li>
             <% if facade.user?(follower.attributes[:id])%>
               <% unless facade.friend?(follower.attributes[:id]) %>
-                <p><%= link_to "Add as Friend", add_friend_path(uid: follower.attributes[:id]), method: :post %></p>
+                <p><%= link_to "Add as Friend", add_friend_path(uid: follower.attributes[:id]), method: :post, class: "mt2 btn btn-primary mb1 bg-teal" %></p>
               <% end %>
             <% end %>
           </ul>
@@ -50,7 +50,7 @@
             <li class="handle"><%= link_to user.handle, "https://github.com/#{user.handle}" %></li>
             <% if facade.user?(user.attributes[:id])%>
               <% unless facade.friend?(user.attributes[:id]) %>
-                <p><%= link_to "Add as Friend", add_friend_path(uid: user.attributes[:id]), method: :post %></p>
+                <p><%= link_to "Add as Friend", add_friend_path(uid: user.attributes[:id]), method: :post, class: "mt2 btn btn-primary mb1 bg-teal" %></p>
               <% end %>
             <% end %>
           </ul>
