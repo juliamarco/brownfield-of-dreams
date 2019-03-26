@@ -88,11 +88,6 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
 
     expect(page).to have_content('This account has not yet been activated. Please check your email.') # rubocop:disable Metrics/LineLength
 
-
- # As a non-activated user
-# When I check my email for the registration email
-# I should see a message that says "Visit here to activate your account."
-# And when I click on that link
     visit '/activation'
 
     expect(page).to have_content('Thank you! Your account is now activated.')
