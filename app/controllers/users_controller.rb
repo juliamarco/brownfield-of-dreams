@@ -15,7 +15,8 @@ class UsersController < ApplicationController
       session[:user_id] = user.id
       full_name = user.first_name + ' ' + user.last_name
       flash[:success] = "Logged in as #{full_name}"
-      flash[:info] = 'This account has not yet been activated. Please check your email.'
+      flash[:info] = 'This account has not yet been activated. Please check your email.'  
+      UserNotifierMailer.inform(current_user.email).deliver_now
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'
