@@ -24,7 +24,7 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    click_on'Create Account'
+    click_on'Submit'
 
     expect(current_path).to eq(dashboard_path)
 
@@ -57,7 +57,7 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    click_on'Create Account'
+    click_on'Submit'
 
     expect(page).to have_content('Username already exists')
   end
@@ -85,6 +85,10 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
     expect(current_path).to eq(dashboard_path)
 
     expect(page).to have_content('Logged in as Tim Jr')
-    expect(page).to have_content('This account has not yet been activated. Please check your email.')
+
+    expect(page).to have_content('This account has not yet been activated. Please check your email.') # rubocop:disable Metrics/LineLength
+  end
+
+  it 'activates my account through email' do
   end
 end
