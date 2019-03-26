@@ -7,6 +7,7 @@ class User < ApplicationRecord
   validates :email, uniqueness: true, presence: true
   validates_presence_of :first_name
   enum role: [:default, :admin]
+  enum status: [:Inactive, :Active]
   has_secure_password
 
   def self.from_omniauth(auth_info, current_user)
