@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe 'visitor can create an account', :js do
+describe 'visitor can create an account', :js do # rubocop:disable Metrics/BlockLength, Metrics/LineLength
   it ' visits the home page' do
     email = 'jimbob@aol.com'
     first_name = 'Jim'

@@ -2,12 +2,15 @@ require 'rails_helper'
 
 describe 'As a registered user' do # rubocop:disable Metrics/BlockLength
   before :each do
-    user_1 = create(:user, uid: "1")
-    user_2 = create(:user, uid: "35079289", access_token: ENV["AT_2"], handle: "juliamarco")
+    user_1 = create(:user, uid: '1')
+    user_2 = create(:user,
+                    uid: '35079289',
+                    access_token: ENV['AT_2'],
+                    handle: 'juliamarco')
     allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user_1) # rubocop:disable Metrics/LineLength
   end
-    
-  it 'lets me add another registered user as a friend' do # rubocop:disable Metrics/BlockLength, Metrics/LineLength
+
+  it 'lets me add another registered user as a friend' do
     VCR.use_cassette('github_service') do
       visit dashboard_path
 
