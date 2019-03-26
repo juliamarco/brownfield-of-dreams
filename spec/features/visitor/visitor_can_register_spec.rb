@@ -61,4 +61,30 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
 
     expect(page).to have_content('Username already exists')
   end
+
+  it 'allows me to register as a new user' do
+    email = 'myname@gmail.com'
+    first_name = 'Tim'
+    last_name = 'Jr'
+    password = 'password'
+
+    visit '/'
+
+    click_on 'Register'
+
+    expect(current_path).to eq('/register')
+
+    fill_in 'user[email]', with: email
+    fill_in 'user[first_name]', with: first_name
+    fill_in 'user[last_name]', with: last_name
+    fill_in 'user[password]', with: password
+    fill_in 'user[password_confirmation]', with: password
+
+    click_on 'Submit'
+
+    expect(current_path).to eq(dashboard_path)
+
+    expect(page).to have_content('Logged in as Tim Jr')
+    expect(page).to have_content('This account has not yet been activated. Please check your email.')
+  end
 end
