@@ -43,5 +43,16 @@ describe GithubService do # rubocop:disable Metrics/BlockLength
         expect(result[0]).to have_key(:login)
       end
     end
+
+    it 'get user' do
+      VCR.use_cassette('github service user') do
+        service = GithubService.new
+
+        result = service.get_user('timnallen', @user)
+        expect(result).to be_a(Hash)
+        expect(result[:login]).to eq('timnallen')
+        expect(result[:id]).to eq(42_568_362)
+      end
+    end
   end
 end

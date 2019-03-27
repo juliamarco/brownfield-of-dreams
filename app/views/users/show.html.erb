@@ -1,5 +1,6 @@
 <section class="dashboard-main">
   <h1> <%= current_user.first_name %>'s Dashboard </h1>
+  <h3>Status: <%= current_user.status %></h3>
 
   <%= button_to 'Log Out', logout_path, method: 'delete', class: "btn btn-primary mb1 bg-teal" %>
   <h3>Account Details</h3>
@@ -16,9 +17,12 @@
     </ul>
   </section>
 
-    <% unless current_user.uid %>
-      <%= button_to "Connect to Github", github_connect_path %>
-    <% end %>
+  <% unless current_user.uid %>
+    <%= button_to "Connect to Github", github_connect_path, class: "mt2 btn btn-primary mb1 bg-teal" %>
+  <% end %>
+
+  <%= button_to "Send an Invite", invite_path, method: :get, class: "mt2 btn btn-primary mb1 bg-teal" %>
+
 
   <% if current_user.uid %>
     <section id="Github">
@@ -37,7 +41,7 @@
             <li class="handle"><%= link_to follower.handle, "https://github.com/#{follower.handle}" %></li>
             <% if facade.user?(follower.attributes[:id])%>
               <% unless facade.friend?(follower.attributes[:id]) %>
-                <p><%= link_to "Add as Friend", add_friend_path(uid: follower.attributes[:id]), method: :post %></p>
+                <p><%= link_to "Add as Friend", add_friend_path(uid: follower.attributes[:id]), method: :post, class: "mt2 btn btn-primary mb1 bg-teal" %></p>
               <% end %>
             <% end %>
           </ul>
@@ -50,7 +54,7 @@
             <li class="handle"><%= link_to user.handle, "https://github.com/#{user.handle}" %></li>
             <% if facade.user?(user.attributes[:id])%>
               <% unless facade.friend?(user.attributes[:id]) %>
-                <p><%= link_to "Add as Friend", add_friend_path(uid: user.attributes[:id]), method: :post %></p>
+                <p><%= link_to "Add as Friend", add_friend_path(uid: user.attributes[:id]), method: :post, class: "mt2 btn btn-primary mb1 bg-teal" %></p>
               <% end %>
             <% end %>
           </ul>

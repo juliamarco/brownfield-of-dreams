@@ -24,7 +24,7 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    click_on'Create Account'
+    click_on'Submit'
 
     expect(current_path).to eq(dashboard_path)
 
@@ -57,8 +57,44 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
     fill_in 'user[password]', with: password
     fill_in 'user[password_confirmation]', with: password
 
-    click_on'Create Account'
+    click_on'Submit'
 
     expect(page).to have_content('Username already exists')
+  end
+
+  it 'allows me to activate as a new user' do
+    email = 'myname@gmail.com'
+    first_name = 'Tim'
+    last_name = 'Jr'
+    password = 'password'
+
+    visit '/'
+
+    click_on 'Register'
+
+    expect(current_path).to eq('/register')
+
+    fill_in 'user[email]', with: email
+    fill_in 'user[first_name]', with: first_name
+    fill_in 'user[last_name]', with: last_name
+    fill_in 'user[password]', with: password
+    fill_in 'user[password_confirmation]', with: password
+
+    click_on 'Submit'
+
+    expect(current_path).to eq(dashboard_path)
+
+    expect(page).to have_content('Logged in as Tim Jr')
+
+    expect(page).to have_content('This account has not yet been activated. Please check your email.') # rubocop:disable Metrics/LineLength
+
+    token = User.last.temporary_token
+    visit "/activation?token=#{token}"
+
+    expect(page).to have_content('Thank you! Your account is now activated.')
+
+    visit '/dashboard'
+
+    expect(page).to have_content('Status: Active')
   end
 end
