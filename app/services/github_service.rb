@@ -5,6 +5,10 @@ class GithubService
     repos[0..range]
   end
 
+  def get_user(handle, current_user)
+    get_json("/users/#{handle}", current_user)
+  end
+
   def get_followers(current_user)
     get_json('/user/followers', current_user)
   end

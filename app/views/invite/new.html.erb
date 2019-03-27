@@ -5,9 +5,9 @@
     <%= form_tag('/invite', method: 'post') do %>
       <div >
         <%= label_tag :github_handle %>
-        <%= text_field_tag :github_handle, class: "block col-12 field" %>
+        <%= text_field_tag :github_handle %>
       </div>
-      <%= submit_tag 'Submit', class: "mt2 btn btn-primary mb1 bg-teal" %>
+      <%= submit_tag 'Send Invite', class: "mt2 btn btn-primary mb1 bg-teal" %>
     <% end %>
   </section>
   </main>

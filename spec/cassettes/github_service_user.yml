@@ -1,0 +1,79 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: https://api.github.com/users/timnallen
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      Authorization:
+      - token <ACCESS_TOKEN>
+      User-Agent:
+      - Faraday v0.12.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Server:
+      - GitHub.com
+      Date:
+      - Wed, 27 Mar 2019 21:44:59 GMT
+      Content-Type:
+      - application/json; charset=utf-8
+      Transfer-Encoding:
+      - chunked
+      Status:
+      - 200 OK
+      X-Ratelimit-Limit:
+      - '5000'
+      X-Ratelimit-Remaining:
+      - '4999'
+      X-Ratelimit-Reset:
+      - '1553726699'
+      Cache-Control:
+      - private, max-age=60, s-maxage=60
+      Vary:
+      - Accept, Authorization, Cookie, X-GitHub-OTP
+      Etag:
+      - W/"37efecc380a18b10b1ca0024ccc1a078"
+      Last-Modified:
+      - Sat, 23 Mar 2019 16:17:57 GMT
+      X-Oauth-Scopes:
+      - repo, user
+      X-Accepted-Oauth-Scopes:
+      - ''
+      X-Github-Media-Type:
+      - github.v3; format=json
+      Access-Control-Expose-Headers:
+      - ETag, Link, Location, Retry-After, X-GitHub-OTP, X-RateLimit-Limit, X-RateLimit-Remaining,
+        X-RateLimit-Reset, X-OAuth-Scopes, X-Accepted-OAuth-Scopes, X-Poll-Interval,
+        X-GitHub-Media-Type
+      Access-Control-Allow-Origin:
+      - "*"
+      Strict-Transport-Security:
+      - max-age=31536000; includeSubdomains; preload
+      X-Frame-Options:
+      - deny
+      X-Content-Type-Options:
+      - nosniff
+      X-Xss-Protection:
+      - 1; mode=block
+      Referrer-Policy:
+      - origin-when-cross-origin, strict-origin-when-cross-origin
+      Content-Security-Policy:
+      - default-src 'none'
+      X-Github-Request-Id:
+      - D7AB:1191:83774:11D153:5C9BEEDB
+    body:
+      encoding: ASCII-8BIT
+      string: '{"login":"timnallen","id":42568362,"node_id":"MDQ6VXNlcjQyNTY4MzYy","avatar_url":"https://avatars1.githubusercontent.com/u/42568362?v=4","gravatar_id":"","url":"https://api.github.com/users/timnallen","html_url":"https://github.com/timnallen","followers_url":"https://api.github.com/users/timnallen/followers","following_url":"https://api.github.com/users/timnallen/following{/other_user}","gists_url":"https://api.github.com/users/timnallen/gists{/gist_id}","starred_url":"https://api.github.com/users/timnallen/starred{/owner}{/repo}","subscriptions_url":"https://api.github.com/users/timnallen/subscriptions","organizations_url":"https://api.github.com/users/timnallen/orgs","repos_url":"https://api.github.com/users/timnallen/repos","events_url":"https://api.github.com/users/timnallen/events{/privacy}","received_events_url":"https://api.github.com/users/timnallen/received_events","type":"User","site_admin":false,"name":"Tim
+        Allen","company":null,"blog":"","location":null,"email":null,"hireable":null,"bio":null,"public_repos":34,"public_gists":7,"followers":6,"following":6,"created_at":"2018-08-21T07:32:15Z","updated_at":"2019-03-23T16:17:57Z"}'
+    http_version: 
+  recorded_at: Wed, 27 Mar 2019 21:44:59 GMT
+recorded_with: VCR 4.0.0

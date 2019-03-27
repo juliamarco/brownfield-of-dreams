@@ -14,19 +14,26 @@ describe 'as a user' do
 
     expect(current_path).to eq('/invite')
 
-    fill_in 'invite[github_handle]', with: 'timnallen'
+    fill_in :github_handle, with: 'timnallen'
 
-    click_on 'Send Invite'
+    VCR.use_cassette('github service user') do
+      click_on 'Send Invite'
 
-    expect(current_path).to eq(dashboard_path)
+      expect(current_path).to eq(dashboard_path)
 
-    expect(page).to have_content('Successfully sent invite!')
+      expect(page).to have_content('Successfully sent invite!')
+    end
   end
 
   it 'will let me know if a github handle is incorrect' do
     visit '/invite'
 
-    fill_in 'invite[Github Handle]', with: 'hbfudiosduykfkwbfgudiks'
-    expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.")
+    fill_in :github_handle, with: 'hbfudiosduykfkwbfgudiks'
+
+    VCR.use_cassette('sad github') do
+      click_on 'Send Invite'
+
+      expect(page).to have_content("The Github user you selected doesn't have an email address associated with their account.") # rubocop:disable Metrics/LineLength
+    end
   end
 end
