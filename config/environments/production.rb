@@ -102,7 +102,7 @@ Rails.application.configure do
     domain:               'whispering-fortress-24037.herokuapp.com',
     user_name:            ENV["SENDGRID_USERNAME"],
     password:             ENV["SENDGRID_PASSWORD"],
-    authentication:       'plain',
+    authentication:       :plain,
     enable_starttls_auto: true
   }
 end
