@@ -6,7 +6,7 @@ class ActivationController < ApplicationController
       user = User.find(current_user.id)
       user.update(status: 'Active', temporary_token: '')
     else
-      render file: 'errors/not_found', status: 404
+      four_oh_four
     end
   end
 end

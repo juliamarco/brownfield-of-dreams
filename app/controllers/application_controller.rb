@@ -19,10 +19,10 @@ class ApplicationController < ActionController::Base
   end
 
   def require_user
-    render file: 'errors/not_found', status: 404 unless current_user
+    four_oh_four unless current_user
   end
 
   def four_oh_four
-    raise ActionController::RoutingError.new('Not Found')
+    render file: 'errors/not_found', status: 404
   end
 end
