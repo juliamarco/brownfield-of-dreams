@@ -4,6 +4,7 @@ class Video < ApplicationRecord
   belongs_to :tutorial
 
   validates_presence_of :position
+  validates_numericality_of :position, allow_nil: true
   validates_presence_of :title
   validates_presence_of :video_id
   validates_presence_of :description

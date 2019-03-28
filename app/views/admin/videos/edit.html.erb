@@ -1,0 +1,9 @@
+<h1><%= @video.title %></h1>
+  <div class="tag-field">
+    <%= form_for [:admin, @video] do |f| %>
+      <%= f.label :position, class: "block" %>
+      <%= f.text_field :position, class: "field block" %><br>
+      <%= f.submit "Submit", class: "video-position-submit btn btn-outline" %>
+    <% end %>
+  </div>
+</section>

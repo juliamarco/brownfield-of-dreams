@@ -62,7 +62,7 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
     expect(page).to have_content('Username already exists')
   end
 
-  it 'allows me to activate as a new user' do
+  it 'allows me to activate as a new user (unless I am already active)' do
     email = 'myname@gmail.com'
     first_name = 'Tim'
     last_name = 'Jr'
@@ -96,9 +96,7 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
     visit '/dashboard'
 
     expect(page).to have_content('Status: Active')
-  end
 
-  it 'does not allow me to access the activate path if I am not awaiting activation' do
     visit '/activation'
 
     expect(page).to have_content("The page you're looking for could not be found.")
