@@ -14,6 +14,7 @@ gem 'bcrypt', '~> 3.1.7'
 
 gem 'webpacker', '~> 3.5'
 
+gem 'rspec'
 gem 'yt', '~> 0.29.1'
 gem 'google-api-client'
 gem 'faraday'
@@ -31,6 +32,7 @@ gem 'rspec-activemodel-mocks'
 
 group :development, :test do
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+  gem 'rspec'
   gem 'rspec-rails'
   gem 'foundation-rails'
   gem 'database_cleaner'
