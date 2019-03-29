@@ -5,7 +5,7 @@ class TutorialsController < ApplicationController
     }
   end
 
-  def show
+  def show # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     tutorial = Tutorial.find(params[:id])
     if tutorial.classroom == true
       if current_user

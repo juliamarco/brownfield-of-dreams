@@ -45,6 +45,8 @@ Style/InverseMethods:
 Style/SymbolProc:
   Enabled: false
 
+Style/GuardClause:
+  Enabled: false
 
  # rubocop:disable Metrics/LineLength
  # rubocop:disable Metrics/BlockLength

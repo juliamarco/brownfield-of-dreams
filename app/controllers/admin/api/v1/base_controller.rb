@@ -6,6 +6,7 @@ class Admin::Api::V1::BaseController < ActionController::API
   end
 
   def current_user
+    # rubocop:disable all
     if session[:user_id]
       @current_user ||= User.find(session[:user_id])
     else
@@ -16,4 +17,5 @@ class Admin::Api::V1::BaseController < ActionController::API
   def four_oh_four
     raise ActionController::RoutingError.new('Not Found')
   end
+  # rubocop:enable all
 end

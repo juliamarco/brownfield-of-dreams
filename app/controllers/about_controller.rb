@@ -1,4 +1,4 @@
 class AboutController < ApplicationController
-  def show
+  def show # rubocop:disable Style/EmptyMethod
   end
 end
