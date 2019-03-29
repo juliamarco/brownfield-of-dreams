@@ -9,15 +9,17 @@ class UsersController < ApplicationController
     @user = User.new
   end
 
-  def create
+  def create # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
     user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
       full_name = user.first_name + ' ' + user.last_name
       user.update(temporary_token: SecureRandom.urlsafe_base64.to_s)
       flash[:success] = "Logged in as #{full_name}"
-      flash[:info] = 'This account has not yet been activated. Please check your email.'
-      UserNotifierMailer.inform(current_user.email, current_user.temporary_token).deliver_now
+      flash[:info] = 'This account has not yet been activated. Please check your email.' # rubocop:disable Metrics/LineLength
+      email = current_user.email
+      token = current_user.temporary_token
+      UserNotifierMailer.inform(email, token).deliver_now
       redirect_to dashboard_path
     else
       flash[:error] = 'Username already exists'

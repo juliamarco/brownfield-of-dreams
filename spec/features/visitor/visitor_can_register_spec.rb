@@ -99,6 +99,6 @@ describe 'visitor can create an account', :js do # rubocop:disable Metrics/Block
 
     visit '/activation'
 
-    expect(page).to have_content("The page you're looking for could not be found.")
+    expect(page).to have_content("The page you're looking for could not be found.") # rubocop:disable Metrics/LineLength
   end
 end
